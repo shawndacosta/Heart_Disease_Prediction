@@ -13,9 +13,9 @@ Multiple **classification models** were implemented and compared through a rigor
 4. [IV. Model Selection & Hyperparameter Optimization 📈](#iv-model-selection--hyperparameter-optimization-)
 5. [V. Models Evaluation 📊](#v-models-evaluation-)
 6. [VI. API 🔌](#vi-api-)
-7. [VII. Interface 🖥️](#vii-interface-)
+7. [VII. Interface 🖥️](#vii-interface-%EF%B8%8F)
 8. [VIII. Docker 🐳](#viii-docker-)
-9. [IX. Conclusion ✔️](#ix-conclusion-)
+9. [IX. Conclusion ✔️](#ix-conclusion-%EF%B8%8F)
 
 # I. Introduction 🩺
 
