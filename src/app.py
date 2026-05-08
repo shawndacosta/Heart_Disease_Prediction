@@ -1,14 +1,13 @@
 import streamlit as st
 import requests
-import joblib
 import shap
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
+
+API_URL = os.getenv("API_URL", "http://localhost:8000")
 
 st.set_page_config(page_title="Heart Disease Predictor", page_icon="❤️", layout="centered")
-
-model = joblib.load("heart_model.pkl")
-explainer = shap.TreeExplainer(model)
 
 FEATURE_NAMES = [
     "Age", "Sex", "Chest pain type", "BP", "Cholesterol",
@@ -60,7 +59,7 @@ if st.button("🔍 Analyze Risk", use_container_width=True):
     }
 
     try:
-        response = requests.post("http://api:8000/predict", json=payload)
+        response = requests.post(f"{API_URL}/predict", json=payload)
         result = response.json()
 
         st.divider()
@@ -74,24 +73,20 @@ if st.button("🔍 Analyze Risk", use_container_width=True):
         st.metric(label="Risk Score", value=f"{risk:.1%}")
         st.progress(risk)
 
-        
         st.divider()
         st.subheader("🔎 Explanation — Why this prediction?")
 
-        input_df = pd.DataFrame([[
-            age, sex, chest_pain, bp, cholesterol,
-            fbs, ekg, max_hr, exercise_angina,
-            st_depression, slope_st, vessels, thallium
-        ]], columns=FEATURE_NAMES)
-
-        shap_values = explainer.shap_values(input_df)
+        import numpy as np
+        shap_values = np.array(result["shap_values"])
+        feature_values = np.array(result["feature_values"])
+        base_value = result["base_value"]
 
         fig, ax = plt.subplots(figsize=(8, 5))
         shap.waterfall_plot(
             shap.Explanation(
-                values=shap_values[0],
-                base_values=explainer.expected_value,
-                data=input_df.iloc[0],
+                values=shap_values,
+                base_values=base_value,
+                data=feature_values,
                 feature_names=FEATURE_NAMES
             ),
             show=False
