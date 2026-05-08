@@ -9,7 +9,7 @@ Multiple **classification models** were implemented and compared through a rigor
 ## 📑 Table of Contents
 1. [I. Introduction 🩺](#i-introduction-)
 2. [II. Dataset 🔍](#ii-dataset-)
-3. [III. Data Preprocessing 🛠️](#iii-data-preprocessing-)
+3. [III. Data Preprocessing 🛠️](#iii-data-preprocessing-%EF%B8%8F)
 4. [IV. Model Selection & Hyperparameter Optimization 📈](#iv-model-selection--hyperparameter-optimization-)
 5. [V. Models Evaluation 📊](#v-models-evaluation-)
 6. [VI. API 🔌](#vi-api-)
