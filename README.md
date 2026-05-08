@@ -120,12 +120,23 @@ Open `http://localhost:8501`
 
 ### Without Docker
 ```bash
+git clone https://github.com/shawndacosta/Heart_Disease_Prediction
+cd Heart_Disease_Prediction
+pip install -r requirements.txt
+```
+
+Then split a terminal:
+
+```bash
 # Terminal 1
 uvicorn api:app --reload
+```
 
+```bash
 # Terminal 2
 streamlit run app.py
 ```
+
 Open `http://localhost:8501`
 
 # IX. Conclusion ✔️
