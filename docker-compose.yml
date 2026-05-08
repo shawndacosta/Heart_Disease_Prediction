@@ -5,6 +5,8 @@ services:
       - "8000:8000"
 
   streamlit:
+    environment:
+      - API_URL=http://api:8000
     image: python:3.10-slim
     working_dir: /app
     volumes:
